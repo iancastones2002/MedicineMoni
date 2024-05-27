@@ -1,0 +1,23 @@
+/* Custom CSS for registration form */
+
+body {
+    background-image: url('../images/bluombs.jpg');
+    background-size: cover;
+    background-attachment: fixed; 
+}
+
+.card {
+    margin-top: 50px; /* Spacing from the top */
+    border-radius: 10px; /* Rounded corners for the card */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle effect */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Blue primary button background color */
+    border-color: #007bff; /* Blue primary button border color */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    border-color: #0056b3; /* Darker border on hover */
+}

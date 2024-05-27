@@ -1,0 +1,32 @@
+/* add.css */
+
+.border-md {
+    border-width: 2px;
+}
+
+.btn-facebook {
+    background: #5b74a4;
+    border: none;
+}
+
+.btn-facebook:hover, .btn-facebook:focus {
+    background: #274ca2;
+}
+
+body, .form-control {
+    color: rgb(76, 78, 184) !important; /* Set font color to black */
+}
+
+.border-md {
+    border-color: rgb(49, 96, 154) !important; /* Set border color to black */
+}
+
+body {
+    min-height: 100vh;
+    background-image: url('../images/bluombs.jpg');
+    background-size: cover;
+    background-attachment: fixed; 
+}
+
+/* Insert additional styles here */
+
