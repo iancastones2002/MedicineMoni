@@ -14,7 +14,6 @@ use App\Http\Controllers\Auth\LoginController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
     return view('auth.login');
 })->name('signin');
@@ -23,7 +22,8 @@ Route::get('login', function () {
     return view('auth.login');
 })->name('login');
 
-//Route::get('/login', [loginreg::class, 'login'])->name('login');
+Route::post('login', [LoginController::class, 'loginSubmit'])->name('login.submit');
+
 Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [RegisterController::class, 'regSubmit'])->name('register.submit');
 

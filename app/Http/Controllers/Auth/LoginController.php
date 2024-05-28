@@ -1,21 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
-class loginreg extends Controller
+
+class LoginController extends Controller
 {
-    // Show login form
-    public function login(){
-        return view('login');
-    }
-
-    // Handle login request
-    public function loginSubmit(Request $request){
+    public function loginSubmit(Request $request)
+    {
         $request->validate([
             'username' => 'required|string',
             'password' => 'required|string',
@@ -33,6 +29,7 @@ class loginreg extends Controller
             'password' => 'Incorrect username or password.',
         ]);
     }
+
 
     // Show registration form
     public function reg(){
@@ -55,6 +52,6 @@ class loginreg extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('login')->with('success', 'Registration successful. Please log in.');
+        return redirect()->route('/dashboard')->with('success', 'Registration successful. Please log in.');
     }
 }
