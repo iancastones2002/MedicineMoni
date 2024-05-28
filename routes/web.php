@@ -16,7 +16,7 @@ use App\Http\Controllers\Auth\LoginController;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('auth.login');
 })->name('signin');
 
 Route::get('login', function () {
