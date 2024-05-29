@@ -16,7 +16,7 @@
             font-size: 20px;
         }
         .vertical-ul{
-           width: 10%; 
+           width: 10%;
         }
         .logo{
             width: 120px;
@@ -107,10 +107,10 @@
                         </li>
                     </ul>
                     <hr>
-             
+
                 </div>
             </div>
-            
+
             <div class="col content_here">
                 <nav class="navbar navbar-expand-lg bg-body-tertiary">
                     <div class="container-fluid">
@@ -148,7 +148,7 @@
                         </div>
                     </div>
                     </nav>
-                
+
 
                     <div class="row row-cols-1 row-cols-md-4 g-4 cards_content p-5">
                         <!-- upat lang ang masigo diria na row -->
@@ -204,8 +204,8 @@
                           </div>
                         </div>
                       </div>
-                      
-                      
+
+
 
             </div>
         </div>

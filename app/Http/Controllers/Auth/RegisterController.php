@@ -13,7 +13,7 @@ class RegisterController extends Controller
     {
         return view('auth.register');
     }
-    
+
     public function regSubmit(Request $request)
     {
         $request->validate([
@@ -23,14 +23,14 @@ class RegisterController extends Controller
         ], [
             'username.unique' => 'The username has already been taken.',
         ]);
-    
+
         User::create([
             'fullname' => $request->fullname,
             'username' => $request->username,
             'password' => Hash::make($request->password),
         ]);
-    
+
         return redirect()->route('login')->with('success', 'Registration successful. Please log in.');
     }
-    
+
 }

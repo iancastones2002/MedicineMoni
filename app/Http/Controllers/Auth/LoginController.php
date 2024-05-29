@@ -52,6 +52,6 @@ class LoginController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('/dashboard')->with('success', 'Registration successful. Please log in.');
+        return redirect()->route('/')->with('success', 'Registration successful. Please log in.');
     }
 }
