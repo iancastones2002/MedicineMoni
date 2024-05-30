@@ -7,9 +7,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-
 class LoginController extends Controller
 {
+    // Show login form
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
+
+    // Handle login request
     public function loginSubmit(Request $request)
     {
         $request->validate([
@@ -30,14 +36,15 @@ class LoginController extends Controller
         ]);
     }
 
-
     // Show registration form
-    public function reg(){
-        return view('reg');
+    public function reg()
+    {
+        return view('auth.register');
     }
 
     // Handle registration request
-    public function regSubmit(Request $request){
+    public function regSubmit(Request $request)
+    {
         $request->validate([
             'fullname' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users,username',
@@ -52,6 +59,6 @@ class LoginController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('/')->with('success', 'Registration successful. Please log in.');
+        return redirect()->route('signin')->with('success', 'Registration successful. Please log in.');
     }
 }

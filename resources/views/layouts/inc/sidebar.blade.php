@@ -6,10 +6,10 @@
   -->
     <div class="logo">
         <a href="#" class="d-flex align-items-center text-decoration-none col-md-4">
-            <div class="offset-md-10 pt-1">
-                <h3>MMS</h3>
+            <div class="offset-md-6">
+                <img src="admin/images/logo.jpg" width="150rem" height="auto" alt="logo">
             </div>
-            <img src="images/logo.png" width="60rem" height="auto" alt="logo">
+
         </a>
     </div>
     <div class="sidebar-wrapper">
@@ -20,7 +20,7 @@
                     <p><b>Dashboard</b></p>
                 </a>
             </li>
-            <li class="nav-item {{ Request::is('medicines') ? 'active' : '' }}">
+            <li class="nav-item {{ Request::is('medicines') || Request::is('medicines/create') || Request::is('medicines/*/edit') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('medicines.index') }}">
                     <i class="fa fa-list-alt fa-bounce"></i>
                     <p><b>Medicine List</b></p>

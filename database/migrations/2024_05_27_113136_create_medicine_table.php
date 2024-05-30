@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('medicine', function (Blueprint $table) {
-            $table->id('MedicineID');
+            $table->id('medicine_id');
             $table->unsignedBigInteger('id')->nullable();
             $table->unsignedBigInteger('SupplierID')->nullable();
             $table->string('MedicineName')->nullable();
             $table->string('GenericName')->nullable();
             $table->string('BrandName')->nullable();
             $table->string('DrugClass')->nullable();
-            $table->float('Price')->nullable(); 
+            $table->float('Price')->nullable();
             $table->string('Manufacturer')->nullable();
             $table->integer('Dosage')->nullable();
             $table->integer('QuantityStock')->nullable();
