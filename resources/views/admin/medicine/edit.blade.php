@@ -10,50 +10,101 @@
                 <div class="row">
                     <div class="form-group mt-2 col-md-6">
                         <label for="medicine_name">Medicine Name *</label>
-                        <input type="text" class="form-control" name="medicine_name" id="medicine_name" value="{{ $medicine->medicine_name }}" required>
+                        <input type="text" class="form-control @error('medicine_name') is-invalid @enderror"
+                            name="medicine_name" id="medicine_name"
+                            value="{{ old('medicine_name', $medicine->medicine_name) }}" required>
+                        @error('medicine_name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group mt-2 col-md-6">
                         <label for="generic_name">Generic Name</label>
-                        <input type="text" class="form-control" name="generic_name" id="generic_name" value="{{ $medicine->generic_name }}">
+                        <input type="text" class="form-control @error('generic_name') is-invalid @enderror"
+                            name="generic_name" id="generic_name"
+                            value="{{ old('generic_name', $medicine->generic_name) }}">
+                        @error('generic_name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group mt-2 col-md-6">
                         <label for="brand_name">Brand Name</label>
-                        <input type="text" class="form-control" name="brand_name" id="brand_name" value="{{ $medicine->brand_name }}">
+                        <input type="text" class="form-control @error('brand_name') is-invalid @enderror"
+                            name="brand_name" id="brand_name" value="{{ old('brand_name', $medicine->brand_name) }}">
+                        @error('brand_name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group mt-2 col-md-6">
                         <label for="drug_name">Drug Name</label>
-                        <input type="text" class="form-control" name="drug_name" id="drug_name" value="{{ $medicine->drug_name }}">
+                        <input type="text" class="form-control @error('drug_name') is-invalid @enderror" name="drug_name"
+                            id="drug_name" value="{{ old('drug_name', $medicine->drug_name) }}">
+                        @error('drug_name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group mt-2 col-md-6">
                         <label for="price">Price</label>
-                        <input type="number" class="form-control" name="price" id="price" value="{{ $medicine->price }}">
+                        <input type="number" class="form-control @error('price') is-invalid @enderror" name="price"
+                            id="price" value="{{ old('price', $medicine->price) }}">
+                        @error('price')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group mt-2 col-md-6">
                         <label for="manufacturer">Manufacturer</label>
-                        <input type="text" class="form-control" name="manufacturer" id="manufacturer" value="{{ $medicine->manufacturer }}">
+                        <input type="text" class="form-control @error('manufacturer') is-invalid @enderror"
+                            name="manufacturer" id="manufacturer"
+                            value="{{ old('manufacturer', $medicine->manufacturer) }}">
+                        @error('manufacturer')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group mt-2 col-md-6">
                         <label for="dosage">Dosage</label>
-                        <input type="text" class="form-control" name="dosage" id="dosage" value="{{ $medicine->dosage }}">
+                        <input type="text" class="form-control @error('dosage') is-invalid @enderror" name="dosage"
+                            id="dosage" value="{{ old('dosage', $medicine->dosage) }}">
+                        @error('dosage')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group mt-2 col-md-6">
                         <label for="quantity_stock">Quantity in Stock</label>
-                        <input type="number" class="form-control" name="quantity_stock" id="quantity_stock" value="{{ $medicine->quantity_stock }}">
+                        <input type="number" class="form-control @error('quantity_stock') is-invalid @enderror"
+                            name="quantity_stock" id="quantity_stock"
+                            value="{{ old('quantity_stock', $medicine->quantity_stock) }}">
+                        @error('quantity_stock')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group mt-2 col-md-6">
                         <label for="manufacture_date">Manufacture Date</label>
-                        <input type="date" class="form-control" name="manufacture_date" id="manufacture_date" value="{{ $medicine->manufacture_date }}">
+                        <input type="date" class="form-control @error('manufacture_date') is-invalid @enderror"
+                            name="manufacture_date" id="manufacture_date"
+                            value="{{ old('manufacture_date', $medicine->manufacture_date) }}">
+                        @error('manufacture_date')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group mt-2 col-md-6">
                         <label for="expiration_date">Expiration Date</label>
-                        <input type="date" class="form-control" name="expiration_date" id="expiration_date" value="{{ $medicine->expiration_date }}">
+                        <input type="date" class="form-control @error('expiration_date') is-invalid @enderror"
+                            name="expiration_date" id="expiration_date"
+                            value="{{ old('expiration_date', $medicine->expiration_date) }}">
+                        @error('expiration_date')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group mt-2 col-md-12">
                         <label for="image">Upload Image</label>
-                        <input type="file" class="form-control" name="image" id="image">
-                        @if($medicine->image)
-                            <img src="{{ asset('assets/uploads/' . $medicine->image) }}" alt="Image" style="width: 50px;">
+                        <input type="file" class="form-control @error('image') is-invalid @enderror" name="image"
+                            id="image">
+                        @if ($medicine->image)
+                            <img src="{{ asset('assets/uploads/' . $medicine->image) }}" alt="Image"
+                                style="width: 250px;">
                         @endif
+                        @error('image')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="modal-footer">

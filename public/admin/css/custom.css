@@ -10,8 +10,10 @@
     height: 200px;
 }
 .image-new{
-    width: 100%;
-    height: auto    ;
+    max-width: 100%; /* Ensures the image does not exceed the parent container's width */
+    height: auto; /* Ensures the image maintains its aspect ratio */
+    object-fit: cover; /* Ensures the image covers the entire container */
+    max-height: 200px;
 }
 .form-select{
     display: block;

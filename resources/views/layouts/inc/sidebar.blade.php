@@ -7,7 +7,7 @@
     <div class="logo">
         <a href="#" class="d-flex align-items-center text-decoration-none col-md-4">
             <div class="offset-md-6">
-                <img src="admin/images/logo.jpg" width="150rem" height="auto" alt="logo">
+                <img src="{{ asset('admin/images/logo.jpg') }}" width="150rem" height="auto" alt="logo">
             </div>
 
         </a>

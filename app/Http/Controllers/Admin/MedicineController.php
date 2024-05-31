@@ -66,8 +66,14 @@ class MedicineController extends Controller
 
         $medicine->save();
 
-        return redirect()->route('medicines.index')
-                         ->with('success', 'Medicine created successfully.');
+        // return redirect()->route('medicines.index')
+        //                  ->with('success', 'Medicine created successfully.');
+        if ($medicine->exists) {
+            return redirect()->route('medicines.index')
+                             ->with('success', 'Medicine created successfully.');
+        } else {
+            return redirect()->back()->withErrors(['error' => 'Failed to create medicine.']);
+        }
     }
 
     /**
@@ -76,7 +82,7 @@ class MedicineController extends Controller
     public function show($id)
     {
         $medicine = Medicine::findOrFail($id);
-        return view('admin.medicine.show', compact('medicine'));
+        return view('medicine.show', compact('medicine'));
     }
 
     /**
