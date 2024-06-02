@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Medicine;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -13,8 +14,8 @@ class MedicineController extends Controller
      */
     public function index()
     {
-        $medicines = Medicine::all();
-        return view("admin.medicine.index")->with("medicines", $medicines);
+        $medicines = Medicine::with('supplier')->get();
+        return view('admin.medicine.index', compact('medicines'));
     }
 
     /**
@@ -22,7 +23,8 @@ class MedicineController extends Controller
      */
     public function create()
     {
-        return view('admin.medicine.add');
+        $suppliers = Supplier::all();
+        return view('admin.medicine.add', compact('suppliers'));
     }
 
     /**
@@ -31,13 +33,14 @@ class MedicineController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'supplier_id' => 'required|exists:suppliers,id',
             'medicine_name' => 'required|string|max:255',
             'generic_name' => 'nullable|string|max:255',
             'brand_name' => 'nullable|string|max:255',
             'drug_name' => 'nullable|string|max:255',
             'price' => 'nullable|numeric',
             'manufacturer' => 'nullable|string|max:255',
-            'dosage' => 'nullable|integer',
+            'dosage' => 'nullable|string|max:255',
             'quantity_stock' => 'nullable|integer',
             'manufacture_date' => 'nullable|date',
             'expiration_date' => 'nullable|date',
@@ -46,13 +49,7 @@ class MedicineController extends Controller
 
         $medicine = new Medicine();
 
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('assets/uploads/', $filename);
-            $medicine->image = $filename;
-        }
-
+        $medicine->supplier_id = $request->supplier_id;
         $medicine->medicine_name = $request->medicine_name;
         $medicine->generic_name = $request->generic_name;
         $medicine->brand_name = $request->brand_name;
@@ -64,16 +61,17 @@ class MedicineController extends Controller
         $medicine->manufacture_date = $request->manufacture_date;
         $medicine->expiration_date = $request->expiration_date;
 
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move('assets/uploads/', $filename);
+            $medicine->image = $filename;
+        }
+
         $medicine->save();
 
-        // return redirect()->route('medicines.index')
-        //                  ->with('success', 'Medicine created successfully.');
-        if ($medicine->exists) {
-            return redirect()->route('medicines.index')
-                             ->with('success', 'Medicine created successfully.');
-        } else {
-            return redirect()->back()->withErrors(['error' => 'Failed to create medicine.']);
-        }
+        return redirect()->route('medicines.index')
+                         ->with('success', 'Medicine created successfully.');
     }
 
     /**
@@ -82,7 +80,7 @@ class MedicineController extends Controller
     public function show($id)
     {
         $medicine = Medicine::findOrFail($id);
-        return view('medicine.show', compact('medicine'));
+        return view('admin.medicine.show', compact('medicine'));
     }
 
     /**
@@ -91,7 +89,8 @@ class MedicineController extends Controller
     public function edit($id)
     {
         $medicine = Medicine::findOrFail($id);
-        return view('admin.medicine.edit', compact('medicine'));
+        $suppliers = Supplier::all();
+        return view('admin.medicine.edit', compact('medicine', 'suppliers'));
     }
 
     /**
@@ -100,13 +99,14 @@ class MedicineController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'supplier_id' => 'required|exists:suppliers,id',
             'medicine_name' => 'required|string|max:255',
             'generic_name' => 'nullable|string|max:255',
             'brand_name' => 'nullable|string|max:255',
             'drug_name' => 'nullable|string|max:255',
             'price' => 'nullable|numeric',
             'manufacturer' => 'nullable|string|max:255',
-            'dosage' => 'nullable|integer',
+            'dosage' => 'nullable|string|max:255',
             'quantity_stock' => 'nullable|integer',
             'manufacture_date' => 'nullable|date',
             'expiration_date' => 'nullable|date',
@@ -115,13 +115,7 @@ class MedicineController extends Controller
 
         $medicine = Medicine::findOrFail($id);
 
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('assets/uploads/', $filename);
-            $medicine->image = $filename;
-        }
-
+        $medicine->supplier_id = $request->supplier_id;
         $medicine->medicine_name = $request->medicine_name;
         $medicine->generic_name = $request->generic_name;
         $medicine->brand_name = $request->brand_name;
@@ -132,6 +126,13 @@ class MedicineController extends Controller
         $medicine->quantity_stock = $request->quantity_stock;
         $medicine->manufacture_date = $request->manufacture_date;
         $medicine->expiration_date = $request->expiration_date;
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move('assets/uploads/', $filename);
+            $medicine->image = $filename;
+        }
 
         $medicine->save();
 
@@ -151,3 +152,4 @@ class MedicineController extends Controller
                          ->with('success', 'Medicine deleted successfully.');
     }
 }
+

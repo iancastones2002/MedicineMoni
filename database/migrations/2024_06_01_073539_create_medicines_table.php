@@ -13,18 +13,20 @@ return new class extends Migration
     {
         Schema::create('medicines', function (Blueprint $table) {
             $table->id();
-            $table->string('medicine_name')->nullable();
+            $table->foreignId('supplier_id')->constrained()->onDelete('cascade');
+            $table->string('medicine_name');
             $table->string('generic_name')->nullable();
             $table->string('brand_name')->nullable();
             $table->string('drug_name')->nullable();
-            $table->float('price')->nullable();
+            $table->decimal('price', 10, 2);
             $table->string('manufacturer')->nullable();
-            $table->integer('dosage')->nullable();
-            $table->integer('quantity_stock')->nullable();
+            $table->string('dosage')->nullable();
+            $table->integer('quantity_stock')->default(0);
             $table->date('manufacture_date')->nullable();
             $table->date('expiration_date')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

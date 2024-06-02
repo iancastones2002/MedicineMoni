@@ -10,7 +10,7 @@
 <div class="container">
         <div class="content-wrapper">
 
-            
+
             <div class="card-content">
                 <h2>Advil</h2>
             <p><b>Medicine ID:</b> 001</p>
@@ -34,10 +34,10 @@
             <div class="edit-button">
                 <button type="button" class="edit-btn">Edit</button>
             </div>
-           
+
         </div>
-       
+
     </div>
-    
+
 </body>
 </html>

@@ -2,73 +2,55 @@
 
 
 @section('content')
+    <div class="container">
 
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <!-- Page title -->
-            <div class="my-5">
-                <h3>My Profile</h3>
-                <hr>
+
+        <form action="{{ route('profile.update', $user->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input type="text" class="form-control" id="first_name" name="first_name" value="{{ $user->first_name }}"
+                    required>
             </div>
-            <!-- Form START -->
-            <form class="file-upload">
-                <div class="row mb-5 gx-5">
-                    <!-- Contact detail -->
-                    <div class="col-xxl-8 mb-5 mb-xxl-0">
-                        <div class="bg-secondary-soft px-4 py-5 rounded">
-                            <div class="row g-3">
-                                <h4 class="mb-4 mt-0">Contact Detail</h4>
-                                <!-- Full Name -->
-                                <div class="col-md-6">
-                                    <label class="form-label">Full name</label>
-                                    <input type="text" class="form-control" placeholder="Full name" aria-label="Full name">
-                                </div>
-                                <!-- Username -->
-                                <div class="col-md-6">
-                                    <label class="form-label">Username</label>
-                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-                                </div>
-                                <!-- Email -->
-                                <div class="col-md-6">
-                                    <label for="inputEmail4" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Change password -->
-                    <div class="col-xxl-6">
-                        <div class="bg-secondary-soft px-4 py-5 rounded">
-                            <div class="row g-3">
-                                <h4 class="my-4">Change Password</h4>
-                                <!-- Old password -->
-                                <div class="col-md-6">
-                                    <label for="exampleInputPassword1" class="form-label">Old password </label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Old password">
-                                </div>
-                                <!-- New password -->
-                                <div class="col-md-6">
-                                    <label for="exampleInputPassword2" class="form-label">New password </label>
-                                    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="New password">
-                                </div>
-                                <!-- Confirm password -->
-                                <div class="col-md-12">
-                                    <label for="exampleInputPassword3" class="form-label">Confirm Password </label>
-                                    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Confirm password">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Button -->
-                <div class="gap-3 d-md-flex justify-content-md-end text-center">
-                    <button type="button" class="btn btn-danger btn-lg">Delete profile</button>
-                    <button type="button" class="btn btn-primary btn-lg">Update profile</button>
-                </div>
-            </form> <!-- Form END -->
-        </div>
-    </div>
-</div>
+            <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input type="text" class="form-control" id="last_name" name="last_name" value="{{ $user->last_name }}"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="middle_name">Middle Name</label>
+                <input type="text" class="form-control" id="middle_name" name="middle_name"
+                    value="{{ $user->middle_name }}">
+            </div>
+            <div class="form-group">
+                <label for="suffix">Suffix</label>
+                <input type="text" class="form-control" id="suffix" name="suffix" value="{{ $user->suffix }}">
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" value="{{ $user->username }}"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" name="address" value="{{ $user->address }}">
+            </div>
+            <div class="form-group">
+                <label for="phone_number">Phone Number</label>
+                <input type="text" class="form-control" id="phone_number" name="phone_number"
+                    value="{{ $user->phone_number }}">
+            </div>
 
+            <!-- Add more fields as needed -->
+
+            <button type="submit" class="btn btn-primary">Update Profile</button>
+        </form>
+    </div>
 @endsection

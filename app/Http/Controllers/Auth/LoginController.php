@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -36,29 +37,4 @@ class LoginController extends Controller
         ]);
     }
 
-    // Show registration form
-    public function reg()
-    {
-        return view('auth.register');
-    }
-
-    // Handle registration request
-    public function regSubmit(Request $request)
-    {
-        $request->validate([
-            'fullname' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users,username',
-            'password' => 'required|string|min:8|confirmed',
-        ], [
-            'username.unique' => 'The username has already been taken.',
-        ]);
-
-        User::create([
-            'name' => $request->fullname,
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
-        ]);
-
-        return redirect()->route('signin')->with('success', 'Registration successful. Please log in.');
-    }
 }

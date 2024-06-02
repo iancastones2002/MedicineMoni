@@ -9,21 +9,26 @@
             <div class="offset-md-6">
                 <img src="{{ asset('admin/images/logo.jpg') }}" width="150rem" height="auto" alt="logo">
             </div>
-
         </a>
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="nav-item {{ Request::is('dashboard') ? 'active' : '' }}  ">
-                <a class="nav-link" href="{{ url('/dashboard') }}">
+            <li class="nav-item {{ Request::is('dashboard') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('dashboard') }}">
                     <i class="material-icons">dashboard</i>
                     <p><b>Dashboard</b></p>
                 </a>
             </li>
-            <li class="nav-item {{ Request::is('medicines') || Request::is('medicines/create') || Request::is('medicines/*/edit') ? 'active' : '' }}">
+            <li class="nav-item {{ Request::is('medicines*') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('medicines.index') }}">
                     <i class="fa fa-list-alt fa-bounce"></i>
                     <p><b>Medicine List</b></p>
+                </a>
+            </li>
+            <li class="nav-item {{ Request::is('suppliers*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('suppliers.index') }}">
+                    <i class="fa fa-user-tie fa-bounce"></i>
+                    <p><b>Supplier</b></p>
                 </a>
             </li>
         </ul>

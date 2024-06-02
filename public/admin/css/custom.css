@@ -6,7 +6,7 @@
     height: 70px;
 }
 .images{
-    width: 200px;
+    width: 250px;
     height: 200px;
 }
 .image-new{
@@ -29,6 +29,10 @@
     background-size: 16px 12px;
     border: 1px solid #ced4da;
     border-radius: .25rem;
+
+.btn-med{
+    text-align: right;
+}
 
 
 }
