@@ -228,7 +228,7 @@ th {
 }
 
 label {
-  display: inline-block;
+  display: inline-flex;
   margin-bottom: .5rem;
 }
 
@@ -339,7 +339,7 @@ progress {
 }
 
 output {
-  display: inline-block;
+  display: inline-flex;
 }
 
 summary {
@@ -649,7 +649,7 @@ th {
 }
 
 label {
-  display: inline-block;
+  display: inline-flex;
   margin-bottom: .5rem;
 }
 
@@ -760,7 +760,7 @@ progress {
 }
 
 output {
-  display: inline-block;
+  display: inline-flex;
 }
 
 summary {
@@ -884,7 +884,7 @@ mark,
 }
 
 .list-inline-item {
-  display: inline-block;
+  display: inline-flex;
 }
 
 .list-inline-item:not(:last-child) {
@@ -927,7 +927,7 @@ mark,
 }
 
 .figure {
-  display: inline-block;
+  display: inline-flex ;
 }
 
 .figure-img {
@@ -1073,7 +1073,6 @@ pre code {
 .col-sm-9,
 .col-sm-10,
 .col-sm-11,
-.col-sm-12,
 .col-sm,
 .col-sm-auto,
 .col-md-1,
@@ -1367,11 +1366,6 @@ pre code {
   .col-sm-11 {
     flex: 0 0 91.666667%;
     max-width: 91.666667%;
-  }
-
-  .col-sm-12 {
-    flex: 0 0 100%;
-    max-width: 100%;
   }
 
   .order-sm-first {
@@ -2255,6 +2249,7 @@ pre code {
 
 @media (max-width: 575.98px) {
   .table-responsive-sm {
+    display: block;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -2268,6 +2263,7 @@ pre code {
 
 @media (max-width: 767.98px) {
   .table-responsive-md {
+    display: block;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -2281,6 +2277,7 @@ pre code {
 
 @media (max-width: 991.98px) {
   .table-responsive-lg {
+    display: block;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -2294,6 +2291,7 @@ pre code {
 
 @media (max-width: 1199.98px) {
   .table-responsive-xl {
+    display: block;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -2306,6 +2304,7 @@ pre code {
 }
 
 .table-responsive {
+  display: block;
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -2765,13 +2764,13 @@ select.form-control-lg:not([size]):not([multiple]),
   }
 
   .form-inline .form-control {
-    display: inline-block;
+    display: inline-flex;
     width: auto;
     vertical-align: middle;
   }
 
   .form-inline .form-control-plaintext {
-    display: inline-block;
+    display: inline-flex;
   }
 
   .form-inline .input-group {
@@ -2804,7 +2803,7 @@ select.form-control-lg:not([size]):not([multiple]),
 }
 
 .btn {
-  display: inline-block;
+  display: inline-flex;
   font-weight: 400;
   text-align: center;
   white-space: nowrap;
@@ -3565,7 +3564,7 @@ tbody.collapse.show {
 }
 
 .dropdown-toggle::after {
-  display: inline-block;
+  display: inline-flex;
   width: 0;
   height: 0;
   margin-left: 0.255em;
